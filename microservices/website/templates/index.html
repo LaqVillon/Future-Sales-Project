@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Future Sales API</title>
+  <link href='https://fonts.googleapis.com/css?family=Merriweather|Arimo|Hind:300|Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <style>
+    body {
+      font-family: 'Arimo', sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .login {
+      background-color: #1e1e1e;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      width: 300px;
+    }
+
+    .login h1 {
+      font-family: 'Merriweather', serif;
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    .login input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #333;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 1em;
+      background-color: #333;
+      color: #e0e0e0;
+    }
+
+    .login button {
+      background-color: #5cb85c;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      width: 100%;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .login button:hover {
+      background-color: #4cae4c;
+    }
+
+    .login .prediction {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #e0e0e0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login">
+    <h1>Sales Prediction</h1>
+    <form action="{{ url_for('predict') }}" method="post">
+      <input type="text" name="shop_id" placeholder="Shop ID" required="required" />
+      <input type="text" name="item_id" placeholder="Item ID" required="required" />
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+    <div class="prediction">
+      {{ prediction_text }}
+    </div>
+  </div>
+</body>
+</html>
